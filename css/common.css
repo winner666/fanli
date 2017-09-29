@@ -1,0 +1,49 @@
+body{
+    font-size:13px;
+}
+.am-selected-status,.am-selected-list{
+    font-size:13px;
+}
+.input{
+    border:1px solid #ccc!important;
+}
+.theme-white .tpl-table-black-operation .table-warning{
+    border-color:#ea6e0c!important;
+    color:#ea6e0c!important;
+}
+.theme-black .tpl-form-border-form .am-form-label{
+   font-size:13px!important;
+}
+
+.mask{height:100%; width:100%; position:fixed; _position:absolute; top:0;left:0; z-index:1300; display: none;}
+
+.opacity{ opacity:0.3; filter: alpha(opacity=30); background-color:#000;}
+/*弹出层*/
+.box{
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background: #fff;
+    position: absolute;
+    top:20%;
+    left:50%;
+    display: none;
+    z-index:1301;
+    padding:1.5rem;
+    margin-left: -200px;
+}
+.user-title{font-size:16px;font-weight:600;}
+.top{
+    margin-top:2rem;}
+input{
+    outline: none;
+}
+.input{
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    line-height:2rem;
+}
+button{
+    outline: none;
+}

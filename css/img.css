@@ -1,0 +1,76 @@
+#AddPicture{
+    height:0;
+}
+/* 上传图片放置区域 */
+
+.upload-car-img{
+    /*position: relative;*/
+}
+.img-place{
+
+
+    height:160px;
+    /*position: absolute;
+    top:25px;*/
+    left:10px;
+    overflow: hidden;
+    border:1px solid #ccc;
+}
+.img-list{
+
+    height:160px;
+    overflow: auto;
+}
+.a-img-place{
+    width:175px;
+    height:80px;
+    float: left;
+    margin-right:3px;
+    margin-bottom:3px;
+
+    position: relative;
+}
+.a-img-place img{
+    width:100%;
+    height:100%;
+}
+.new-style{
+    position: relative;
+}
+
+
+.upload-bnt{
+    widows: 184px;
+    height:78px;
+    line-height: 78px;
+    text-align: center;
+    font-size: 14px;
+    color: #363636;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+
+}
+.preview{
+    opacity: 0;
+}
+.upload-img-place{
+    width:560px;
+    height: 250px;
+    border:1px solid #ddd;
+}
+.cencel-x{
+    width:20px;
+    height:20px;
+    background: rgba(0,0,0,0.6);
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor:pointer;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 10;
+    display: none;
+}

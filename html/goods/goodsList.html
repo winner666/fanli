@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商品列表</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <script src="../../assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/page.css">
+    <script src="../../assets/js/jquery.min.js"></script>
+    <style>
+        .am-selected {
+            width:50%;
+            font-size:13px;}
+        body{
+            overflow-x:hidden;
+        }
+        .btn button{margin-right:6rem;}
+        .shade{
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            z-index:2000;
+        }
+        .popup{
+            width: 500px;
+            /*height: 100%;*/
+            margin: 0 auto;
+            position: absolute;
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%,-20%);
+            background: #fff;
+            display: none;
+            padding-bottom: 20px;
+            z-index:2001;
+            border-radius:5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+
+      #ImgPic{
+          width:100%;
+          height:100%;
+          display: block;
+      }
+        .box-input{
+            width: 440px;
+            margin-left: 20px;
+        }
+        .close{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor:pointer;
+        }
+        .close i{
+            width: 30px;
+            height: 30px;
+        }
+        .close i img{
+            width: 100%;
+            height: 100%;
+        }
+        .box-input{
+            margin-bottom: 1.5rem;
+        }
+        /*设置特价商品*/
+       .setGoods{
+       	background: #fff;
+       	border-radius: 5px;
+       	-webkit-border-radius: 5px;
+       	-moz-border-radius: 5px;
+       	padding:1.5rem;
+       	position: absolute;
+       	z-index: 2300;
+       	width: 50%;
+       	top: 10%;
+       	left: 50%;
+           margin-left:-400px;
+       	display: none;
+       	
+       }
+       .check{
+       	/*position: static;*/
+       	/*width: 0;*/
+       }
+       .setTitle{font-weight: 600;}
+       .tpl-table-line-img{width: 100px;max-height:60px;}
+        .specailBtn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body data-type="widgets">
+<script src="../../assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header>
+        <!-- logo -->
+        <div class="am-fl tpl-header-logo">
+            <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="tpl-header-fluid">
+            <!-- 侧边切换 -->
+            <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                </span>
+            </div>
+
+            <!-- 其它功能-->
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <!-- 欢迎语 -->
+                    <li class="am-text-sm tpl-header-navbar-welcome">
+                        <a href="../set/pass.html">修改密码</a>
+                    </li>
+
+
+
+
+
+                    <!-- 退出 -->
+                    <li class="am-text-sm">
+                        <a href="javascript:;" class="back">
+                            <span class="am-icon-sign-out"></span> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+        <div class="tpl-skiner-toggle am-icon-cog">
+        </div>
+        <div class="tpl-skiner-content">
+            <div class="tpl-skiner-content-title">
+                选择主题
+            </div>
+            <div class="tpl-skiner-content-bar">
+                <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                <span class="skiner-color skiner-black" data-color="theme-black"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 侧边导航栏 -->
+			<div class="left-sidebar">
+
+				<!-- 菜单 -->
+				<ul class="sidebar-nav">
+
+					<!--<li class="sidebar-nav-link">
+						<a href="../index/index.html">
+							<i class="am-icon-home sidebar-nav-link-logo"></i>首页
+						</a>
+					</li>-->
+
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>商户管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../index/userShopType.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商户分类
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../index/index.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>商户列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../goods/goodsList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>商品列表
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../user/userList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>用户管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../order/orderList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>订单管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../comment/commentList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>评价管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>资讯管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../information/sensitive.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>设置敏感词
+								</a>
+							</li>
+							<li class="sidebar-nav-link">
+								<a href="../information/type.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>资讯分类
+								</a>
+							</li>	
+							<li class="sidebar-nav-link">
+								<a href="../information/informationList.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>资讯列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>财务管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../finance/recharge.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>充值列表
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../finance/withdrawals.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>提现列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../active/active.html">
+							<i class="am-icon-wpforms sidebar-nav-link-logo"></i>活动管理
+
+						</a>
+					</li>
+					<!--<li class="sidebar-nav-link">
+						<a href="../agent/agent.html">
+							<i class="am-icon-bar-chart sidebar-nav-link-logo"></i>代理管理
+
+						</a>
+					</li>
+
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>系统管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="table-list.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../set/pass.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>修改密码
+								</a>
+							</li>
+						</ul>
+					</li>-->
+				</ul>
+			</div>
+			<!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div style="margin:1.5rem 0 0 1.5rem;">
+
+
+            <div class="row-content am-cf">
+                <div class="row">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+
+                                <div class="widget-title am-fl">商品列表</div>
+
+                            </div>
+                            <div class="widget-body  am-fr">
+                                <form class="am-form tpl-form-border-form tpl-form-border-br am-form-inline">
+
+                                    <div class="am-u-sm-4 am-u-md-4 am-cf">
+                                        <label for="shopName" class="am-fl">商品名称</label>
+                                        <div  class="am-u-sm-8 am-u-md-8 ">
+                                            <input type="text" class="am-form-field am-fl input" id="shopName">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="am-u-sm-4 am-u-md-4 ">
+                                        <label for="selectType" class="">店铺</label>
+                                        <select data-am-selected="{btnSize: 'sm',maxHeight:150}" id="selectType" class="select">
+
+
+                                        </select>
+                                    </div>
+
+                                    <div class="am-u-sm-4 am-u-md-4 am-cf">
+                                        <label for="type" class="am-fl">状态</label>
+                                        <select data-am-selected="{btnSize: 'sm'}" id="type" class="select">
+                                            <option value="-1">请选择</option>
+                                            <option value="0">正常</option>
+                                            <option value="1">已下架</option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="am-g" style="margin-top:5rem;">
+                                        <div class="am-u-sm-4 am-u-md-4 am-cf">
+                                            <!--<input id="remember-me" type="checkbox">-->
+                                            <!--<label for="remember-me">-->
+
+                                                <!--特价商品-->
+                                            <!--</label>-->
+                                            <label class="am-checkbox-inline" style="font-weight: 600">
+                                                <input type="checkbox"  value="" data-am-ucheck id="checkBox" data-type="checkbox">抢购商品
+                                            </label>
+                                        </div>
+                                        <div class="am-u-sm-4"></div>
+                                        <div class="am-u-sm-4 btn ">
+                                            <button type="button" class="am-btn am-btn-success am-btn-xs specialGoods" >设置特价商品</button>
+                                            <button type="button" class="am-btn am-btn-secondary am-btn-xs am-fr" onclick="orderList(1,-1)">搜索</button>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="am-u-sm-12" style="margin-top: 1.5rem;">
+                                        <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+                                            <thead>
+                                            <tr>
+                                                <th>商品图片</th>
+                                                <th>商品编号</th>
+                                                <th>商品名称</th>
+                                                <th>所属店铺</th>
+                                                <th>商品类别</th>
+                                                <th>原价</th>
+                                                <th>现价</th>
+                                                <th>销量</th>
+                                                <th>简介</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="list">
+                                            <!-- more data -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--分页-->
+                                    <div class="am-u-lg-12 am-cf">
+                                        <div class="am-fr isPage">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--列表end-->
+    </div>
+
+
+</div>
+</div>
+
+<!--遮罩-->
+<div class="shade"></div>
+<!--弹框-->
+<div class="popup">
+    <!--<div class="wrap" >-->
+    <div class="close"><i> <img src="../../assets/img/close.png"/></i></div>
+    <form class="am-form am-form-horizontal" style="margin-top: 2.5rem;">
+        <div class="am-form-group box-input">
+            <label for="goodsId" class="am-u-sm-3 am-form-label">商品编号：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="goodsId" class="input" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="am-form-group box-input">
+            <label for="goodsName" class="am-u-sm-3 am-form-label">商品名称：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="goodsName" class="input username" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="goodsName" class="am-u-sm-3 am-form-label">照片：</label>
+            <div class="am-u-sm-9 " style="height: 150px;">
+                <img src="" id="ImgPic" >
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="nameShop" class="am-u-sm-3 am-form-label">所属店铺：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="nameShop" class="input inviteid" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="typeName" class="am-u-sm-3 am-form-label">商品分类：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="typeName" class="input invitename" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="price" class="am-u-sm-3 am-form-label">原价：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="price" class="input sup" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="presentPrice" class="am-u-sm-3 am-form-label">现价：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="presentPrice" class="input sales" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="salesVolume" class="am-u-sm-3 am-form-label">销量：</label>
+            <div class="am-u-sm-9 ">
+                <input type="text" id="salesVolume" class="input team" disabled="disabled">
+            </div>
+        </div>
+        <div class="am-form-group box-input">
+            <label for="remark" class="am-u-sm-3 am-form-label">简介：</label>
+            <div class="am-u-sm-9 ">
+                <textarea name=""  cols="30" rows="10" id="remark" disabled="disabled"></textarea>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+<!--设置特价商品-->
+    <div class="setGoods" style="width:800px;">
+        <div class="setTitle">设置APP首页限时抢购商品</div>
+        <div class="am-g" >
+            <div class="am-u-sm-5 am-u-md-5 " style="border:1px solid #ccc;padding:0.5rem; height:300px;">
+                <div class="am-u-sm-12">
+                    <div class="am-u-sm-8">
+                        <input type="text" class="input" placeholder="商品编号" id="search">
+                    </div>
+                    <div class="am-u-sm-4">
+                        <button class="am-btn am-btn-secondary am-btn-xs typeSure am-round " style="outline: none" id="searchBtn">搜索</button>
+                    </div>
+                </div>
+                <div class="am-u-sm-12" style="font-weight: 600;">
+                    <div class="am-u-sm-3">
+                        操作
+                    </div>
+                    <div class="am-u-sm-3">编号</div>
+                    <div class="am-u-sm-6">商品名称</div>
+                </div>
+                <div class="am-u-sm-12 goodsList" style="height: 240px;overflow: auto">
+                    <div class="am-u-sm-12">
+                        <div class="am-u-sm-3">
+                            <label class="am-checkbox-inline">
+                                <input type="checkbox"  value="" data-am-ucheck class="check">
+                            </label>
+                        </div>
+                        <div class="am-u-sm-3">编号</div>
+                        <div class="am-u-sm-6">商品名称</div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-sm-2 am-u-md-2">
+                <button type="button" class="am-btn am-btn-default am-round am-btn-xs right " style="outline: none;margin-left: 2rem;">向右</button>
+                <!--<button type="button" class="am-btn am-btn-default am-round am-btn-xs left" style="outline: none">向左</button>-->
+            </div>
+            <div class="am-u-sm-5 am-u-md-5" style="border:1px solid #ccc;height: 300px">
+                <div class="am-u-sm-12" style="font-weight: 600;">
+
+                    <div class="am-u-sm-3">编号</div>
+                    <div class="am-u-sm-6">商品名称</div>
+                    <div class="am-u-sm-3">
+                        操作
+                    </div>
+                </div>
+                <div class="am-u-sm-12 specialList" style="height: 240px;overflow: auto">
+
+                </div>
+            </div>
+            <div style="margin-top:1.5rem;float: right;">
+
+                <button type="button" class="am-btn am-btn-default am-radius am-btn-xs typeCancle">取消</button>
+                <!--<button class="am-btn am-btn-primary am-btn-xs typeSure">确定</button>-->
+            </div>
+        </div>
+    </div>
+<!--end特价商品-->
+</div>
+<script src="../../assets/js/amazeui.min.js"></script>
+<script src="../../assets/js/amazeui.datatables.min.js"></script>
+<script src="../../assets/js/dataTables.responsive.min.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script src="../../js/jquery.page.js"></script>
+<script src="../../js/url.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/goods/goodsList.js"></script>
+</body>
+</html>

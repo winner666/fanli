@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>添加商户</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <script src="../../assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/app.css">
+   <style>
+   	.img-place{
+   		border:1px solid #ccc;
+   		height:150px;
+        overflow: hidden;
+   	}
+    .imgBox{
+        height:100%;
+    }
+    .imgBox img{
+        width:100%;
+        height:100%;
+        display: block;
+    }
+   </style>
+    <script src="../../assets/js/jquery.min.js"></script>
+
+</head>
+
+<body data-type="widgets">
+<script src="../../assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header>
+        <!-- logo -->
+        <div class="am-fl tpl-header-logo">
+            <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="tpl-header-fluid">
+            <!-- 侧边切换 -->
+            <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                </span>
+            </div>
+
+            <!-- 其它功能-->
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <!-- 欢迎语 -->
+                    <li class="am-text-sm tpl-header-navbar-welcome">
+                        <a href="../set/pass.html">修改密码</a>
+                    </li>
+                    <!-- 退出 -->
+                    <li class="am-text-sm">
+                        <a href="javascript:;" class="back">
+                            <span class="am-icon-sign-out"></span> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+        <div class="tpl-skiner-toggle am-icon-cog">
+        </div>
+        <div class="tpl-skiner-content">
+            <div class="tpl-skiner-content-title">
+                选择主题
+            </div>
+            <div class="tpl-skiner-content-bar">
+                <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                <span class="skiner-color skiner-black" data-color="theme-black"></span>
+            </div>
+        </div>
+    </div>
+   <!-- 侧边导航栏 -->
+			<div class="left-sidebar">
+
+				<!-- 菜单 -->
+				<ul class="sidebar-nav">
+
+					<!--<li class="sidebar-nav-link">
+						<a href="../index/index.html">
+							<i class="am-icon-home sidebar-nav-link-logo"></i>首页
+						</a>
+					</li>-->
+
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>商户管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../index/userShopType.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商户分类
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../index/index.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>商户列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../goods/goodsList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>商品列表
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../user/userList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>用户管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../order/orderList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>订单管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../comment/commentList.html">
+							<i class="am-icon-calendar sidebar-nav-link-logo"></i>评价管理
+						</a>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>资讯管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../information/sensitive.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>设置敏感词
+								</a>
+							</li>
+							<li class="sidebar-nav-link">
+								<a href="../information/type.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>资讯分类
+								</a>
+							</li>	
+							<li class="sidebar-nav-link">
+								<a href="../information/informationList.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>资讯列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>财务管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="../finance/recharge.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>充值列表
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../finance/withdrawals.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>提现列表
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sidebar-nav-link">
+						<a href="../active/active.html">
+							<i class="am-icon-wpforms sidebar-nav-link-logo"></i>活动管理
+
+						</a>
+					</li>
+					<!--<li class="sidebar-nav-link">
+						<a href="../agent/agent.html">
+							<i class="am-icon-bar-chart sidebar-nav-link-logo"></i>代理管理
+
+						</a>
+					</li>
+
+					<li class="sidebar-nav-link">
+						<a href="javascript:;" class="sidebar-nav-sub-title">
+							<i class="am-icon-table sidebar-nav-link-logo"></i>系统管理
+							<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+						</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<li class="sidebar-nav-link">
+								<a href="table-list.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
+								</a>
+							</li>
+
+							<li class="sidebar-nav-link">
+								<a href="../set/pass.html">
+									<span class="am-icon-angle-right sidebar-nav-link-logo"></span>修改密码
+								</a>
+							</li>
+						</ul>
+					</li>-->
+				</ul>
+			</div>
+			<!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
+            <div class="row">
+
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title am-fl">添加</div>
+                            <div class="widget-function am-fr">
+                                <a href="javascript:;" class="am-icon-cog"></a>
+                            </div>
+                        </div>
+                        <div class="widget-body am-fr">
+
+                            <form class="am-form tpl-form-border-form tpl-form-border-br">
+
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label" style="font-size: 13px;">店铺名称</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="店铺名称" class="shopName">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="shopType" class="am-u-sm-3 am-form-label" style="font-size: 13px;">类别</label>
+                                    <div class="am-u-sm-9">
+                                        <!--<select data-am-selected="{searchBox: 1}" style="display: none;">-->
+                                        <!--<option value="a">-The.CC</option>-->
+                                        <!--<option value="b">夕风色</option>-->
+                                        <!--<option value="o">Orange</option>-->
+                                        <!--</select>-->
+                                        <select data-am-selected="{btnSize: 'sm',maxHeight: 150}" id="shopType">
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="AddPicture" class="am-u-sm-3 am-form-label" style="font-size: 13px;">店面图片</label>
+                                    <div class="am-u-sm-9">
+                                    	
+                                        <div class="img-place">
+											<div class="am-u-sm-4 imgBox" >
+                                            
+												<img src="" alt="" id="adShow">
+											</div>
+										</div>	
+                                        
+                                        <div class="am-form-group am-form-file" id="adImg">
+                                        	
+                                            <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                                                <i class="am-icon-cloud-upload"></i> 添加店面图片</button>
+                                            <input id="AddPicture" type="file" multiple="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="phone" class="am-u-sm-3 am-form-label" style="font-size: 13px;">手机号</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="number" placeholder="手机号" id="phone">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="pass" class="am-u-sm-3 am-form-label" style="font-size: 13px;">店铺密码</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="password" placeholder="店铺密码" id="pass">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="repass" class="am-u-sm-3 am-form-label" style="font-size: 13px;">确认密码</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="password" placeholder="确认密码" id="repass">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+
+                                    <label for="provice" class="am-u-sm-3 am-form-label" style="font-size: 13px;">地址</label>
+                                    <select data-am-selected="{btnSize: 'sm',maxHeight: 150}" id="provice" class="select">
+
+                                    </select>
+
+                                    <select id="city" class="select" data-am-selected="{btnSize: 'sm',maxHeight: 150}">
+
+                                    </select>
+
+                                    <select data-am-selected="{btnSize: 'sm',maxHeight: 150}" id="area">
+
+                                    </select>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="address" class="am-u-sm-3 am-form-label size" style="font-size: 13px;">店铺地址</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="店铺地址" id="address">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="call" class="am-u-sm-3 am-form-label" style="font-size: 13px;">店铺服务热线</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="number" placeholder="店铺服务热线" id="call">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="remark" class="am-u-sm-3 am-form-label" style="font-size: 13px;">店铺简介</label>
+                                    <div class="am-u-sm-9">
+                                        <!--<textarea class="" rows="5" id="info" name="info" cols="100"-->
+                                                  <!--style="width:100%;height:250px;visibility:hidden;margin:0 auto;"-->
+                                                  <!--placeholder="店铺详情" required></textarea>-->
+                                        <textarea class="" rows="10" id="remark" placeholder="店铺简介"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success am-btn-xs btn">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--富文本编辑器配置-->
+<script src="../../js/kindeditor/kindeditor.min.js"></script>
+<script src="../../js/kindeditor/lang/zh_CN.js"></script>
+<script src="../../assets/js/imgview.js"></script>
+
+<script src="../../assets/js/amazeui.min.js"></script>
+<script src="../../assets/js/amazeui.datatables.min.js"></script>
+<script src="../../assets/js/dataTables.responsive.min.js"></script>
+<script src="../../assets/js/app.js"></script>
+<!--上传图片-->
+<script src="../../js/img/moxie.js"></script>
+<script src="../../js/img/plupload.dev.js"></script>
+<script src="../../js/img/qiniu.js"></script>
+<!--自定义-->
+<script src="../../js/url.js"></script>
+<script src="../../js/index/addUserShop.js"></script>
+<script>
+
+    var editor1
+    $(document).ready(function () {
+        KindEditor.ready(function (K) {
+            editor1 = K.create('textarea[name="info"]', {
+                cssPath: '../../js/kindeditor/plugins/code/prettify.css',
+                uploadJson: '../../js/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson: '../../js/kindeditor/jsp/file_manager_json.jsp',
+                items: [   //显示内容
+                    'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                    'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                    'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                    'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                    'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                    'anchor', 'link', 'unlink', '|', 'about'
+                ],
+                allowFileManager: true,     //文件上传按钮
+                allowFlashUpload: true,    //flash上传按钮
+                allowFileUpload: true,     //图片上传按钮
+                afterCreate: function () {
+                    var self = this;
+                    K.ctrl(document, 13, function () {
+                        self.sync();
+                        document.forms['info'].submit();
+                    });
+                    K.ctrl(self.edit.doc, 13, function () {
+                        self.sync();
+                        document.forms['info'].submit();
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
